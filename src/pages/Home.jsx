@@ -18,7 +18,9 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async (endpoint, stateSetter) => {
       try {
-        const res = await fetch(`/api/listing/get${endpoint}`)
+        const res = await fetch(
+          `https://estate-backend.vercel.app/api/listing/get${endpoint}`
+        )
         const data = await res.json()
         stateSetter(data)
       } catch (error) {
