@@ -119,7 +119,9 @@ export default function Profile() {
   const handleSignOut = async () => {
     try {
       dispatch(signOutUserStart())
-      const res = await fetch('/api/auth/signout')
+      const res = await fetch(
+        'https://estate-backend.vercel.app/api/auth/signout'
+      )
       const data = await res.json()
       if (data.success === false) {
         dispatch(deleteUserFailure(data.message))
