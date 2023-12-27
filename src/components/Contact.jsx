@@ -12,7 +12,14 @@ export default function Contact({ listing }) {
     const fetchLandlord = async () => {
       try {
         const res = await fetch(
-          `https://estate-backend.vercel.app/api/user/${listing.userRef}`
+          `https://estate-backend.vercel.app/api/user/${listing.userRef}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+          }
         )
         const data = await res.json()
         setLandlord(data)

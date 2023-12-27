@@ -19,7 +19,14 @@ export default function Home() {
     const fetchData = async (endpoint, stateSetter) => {
       try {
         const res = await fetch(
-          `https://estate-backend.vercel.app/api/listing/get${endpoint}`
+          `https://estate-backend.vercel.app/api/listing/get${endpoint}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+          }
         )
         const data = await res.json()
         stateSetter(data)

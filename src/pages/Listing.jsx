@@ -33,7 +33,14 @@ export default function Listing() {
       try {
         setLoading(true)
         const res = await fetch(
-          `https://estate-backend.vercel.app/api/listing/get/${params.listingId}`
+          `https://estate-backend.vercel.app/api/listing/get/${params.listingId}`,
+          {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+          }
         )
         const data = await res.json()
         if (data.success === false) {

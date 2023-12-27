@@ -80,6 +80,7 @@ export default function Profile() {
           headers: {
             'Content-Type': 'application/json',
           },
+          credentials: 'include',
           body: JSON.stringify(formData),
         }
       )
@@ -103,6 +104,10 @@ export default function Profile() {
         `https://estate-backend.vercel.app/api/user/delete/${currentUser._id}`,
         {
           method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
         }
       )
       const data = await res.json()
@@ -137,7 +142,14 @@ export default function Profile() {
     try {
       setShowListingsError(false)
       const res = await fetch(
-        `https://estate-backend.vercel.app/api/user/listings/${currentUser._id}`
+        `https://estate-backend.vercel.app/api/user/listings/${currentUser._id}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        }
       )
       const data = await res.json()
       if (data.success === false) {
@@ -157,6 +169,10 @@ export default function Profile() {
         `https://estate-backend.vercel.app/api/listing/delete/${listingId}`,
         {
           method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
         }
       )
       const data = await res.json()

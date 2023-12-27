@@ -37,7 +37,14 @@ export default function CreateListing() {
     const fetchListing = async () => {
       const listingId = params.listingId
       const res = await fetch(
-        `https://estate-backend.vercel.app/api/listing/get/${listingId}`
+        `https://estate-backend.vercel.app/api/listing/get/${listingId}`,
+        {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include',
+        }
       )
       const data = await res.json()
       if (data.success === false) {
@@ -157,6 +164,7 @@ export default function CreateListing() {
           headers: {
             'Content-Type': 'application/json',
           },
+          credentials: 'include',
           body: JSON.stringify({
             ...formData,
             userRef: currentUser._id,
